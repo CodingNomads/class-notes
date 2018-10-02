@@ -1,4 +1,4 @@
-package com.codingnomads.javafundamentals.accesscontrolmodifiers;
+package com.codingnomads.javafundamentals.accesscontrolmodifiers.package1;
 
 public class Class2 {
 

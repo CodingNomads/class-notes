@@ -1,10 +1,10 @@
-package com.codingnomads.javafundamentals.accesscontrolmodifiers;
+package com.codingnomads.javafundamentals.accesscontrolmodifiers.package1;
 
 public class Class1 {
 
     public String publicVariable = "publicVariable";
-    String defaultVariable = "defaultVariable";
     protected String protectedVariable = "protectedVariable";
+    String defaultVariable = "defaultVariable";
     private String privateVariable = "privateVariable";
 
     public void print() {

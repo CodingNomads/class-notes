@@ -1,6 +1,9 @@
 package com.codingnomads.javafundamentals.accesscontrolmodifiers;
 
-import access.package2.Class3;
+
+import com.codingnomads.javafundamentals.accesscontrolmodifiers.package1.Class1;
+import com.codingnomads.javafundamentals.accesscontrolmodifiers.package1.Class2;
+import com.codingnomads.javafundamentals.accesscontrolmodifiers.package2.Class3;
 
 public class MainPrint {
     public static void main(String[] args) {
