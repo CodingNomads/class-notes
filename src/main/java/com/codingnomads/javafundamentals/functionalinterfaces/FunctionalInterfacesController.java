@@ -1,5 +1,6 @@
 package com.codingnomads.javafundamentals.functionalinterfaces;
 
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -14,16 +15,27 @@ public class FunctionalInterfacesController {
         usePredicate();
     }
 
-    private static void usePredicate() {
-        Predicate<String> predicateAsAnonymousClass = new Predicate<String>() {
+    private static void useConsumer() {
+        Consumer<String> consumerAsAnonymousClass = new Consumer<String>() {
             @Override
-            public boolean test(String s) {
-                return s.equals("Java");
+            public void accept(String s) {
+                System.out.println(s);
             }
         };
-        Predicate<String> predicate = s -> s.equals("Java");
-        boolean testResult = predicate.test("C#");
-        System.out.println(testResult);
+        Consumer<String> consumer = input -> System.out.println("The consumer consumed: " + input);
+        consumer.accept("an apple");
+    }
+
+    private static void useSupplier() {
+        Supplier<Integer> supplierAsAnonymousClass = new Supplier<Integer>() {
+            @Override
+            public Integer get() {
+                return new Random().nextInt();
+            }
+        };
+        Supplier<Integer> randomIntegerSupplier = () -> new Random().nextInt();
+        Integer supplierResult = randomIntegerSupplier.get();
+        System.out.println("The supplier returned: " + supplierResult);
     }
 
     private static void useFunction() {
@@ -33,30 +45,20 @@ public class FunctionalInterfacesController {
                 return new Integer(s);
             }
         };
-        Function<String, Integer> function = string -> new Integer(string);
-        Integer functionResult = function.apply("2");
+        Function<String, Integer> stringToIntegerFunction = string -> new Integer(string);
+        Integer functionResult = stringToIntegerFunction.apply("2");
         System.out.println("The function returned: " + functionResult);
     }
 
-    private static void useSupplier() {
-        Supplier<String> supplierAsAnonymousClass = new Supplier<String>() {
+    private static void usePredicate() {
+        Predicate<String> predicateAsAnonymousClass = new Predicate<String>() {
             @Override
-            public String get() {
-                return "new String!";
+            public boolean test(String s) {
+                return s.equals("Java");
             }
         };
-        Supplier<String> supplier = () -> "new String!";
-        String supplierResult = supplier.get();
-    }
-
-    private static void useConsumer() {
-        Consumer<String> consumerAsAnonymousClass = new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                System.out.println(s);
-            }
-        };
-        Consumer<String> consumer = input -> System.out.println(input);
-        consumer.accept("Hello");
+        Predicate<String> javaTestingPredicate = s -> s.equals("Java");
+        boolean testResult = javaTestingPredicate.test("C#");
+        System.out.println("The predicated test result is: " + testResult);
     }
 }
