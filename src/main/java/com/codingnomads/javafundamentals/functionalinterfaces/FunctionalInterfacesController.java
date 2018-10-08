@@ -18,8 +18,8 @@ public class FunctionalInterfacesController {
     private static void useConsumer() {
         Consumer<String> consumerAsAnonymousClass = new Consumer<String>() {
             @Override
-            public void accept(String s) {
-                System.out.println(s);
+            public void accept(String input) {
+                System.out.println("The consumer consumed: " + input);
             }
         };
         Consumer<String> consumer = input -> System.out.println("The consumer consumed: " + input);
@@ -41,11 +41,11 @@ public class FunctionalInterfacesController {
     private static void useFunction() {
         Function<String, Integer> functionAsAnonymousClass = new Function<String, Integer>() {
             @Override
-            public Integer apply(String s) {
-                return new Integer(s);
+            public Integer apply(String input) {
+                return new Integer(input);
             }
         };
-        Function<String, Integer> stringToIntegerFunction = string -> new Integer(string);
+        Function<String, Integer> stringToIntegerFunction = input -> new Integer(input);
         Integer functionResult = stringToIntegerFunction.apply("2");
         System.out.println("The function returned: " + functionResult);
     }
@@ -53,11 +53,11 @@ public class FunctionalInterfacesController {
     private static void usePredicate() {
         Predicate<String> predicateAsAnonymousClass = new Predicate<String>() {
             @Override
-            public boolean test(String s) {
-                return s.equals("Java");
+            public boolean test(String input) {
+                return input.equals("Java");
             }
         };
-        Predicate<String> javaTestingPredicate = s -> s.equals("Java");
+        Predicate<String> javaTestingPredicate = input -> input.equals("Java");
         boolean testResult = javaTestingPredicate.test("C#");
         System.out.println("The predicated test result is: " + testResult);
     }

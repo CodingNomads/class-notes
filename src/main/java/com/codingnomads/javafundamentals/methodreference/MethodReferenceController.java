@@ -6,17 +6,20 @@ import java.util.function.Consumer;
 
 public class MethodReferenceController {
     public static void main(String[] args) {
-        Consumer<String> methodReference = System.out::println;
+        Consumer<String> staticMethodReference = System.out::println;
+
+        Thread myThread = new Thread(MethodReferenceController::anyName);
 
         MyRestingRunnable myRestingRunnable = new MyRestingRunnable();
-        Thread myThread = new Thread(MethodReferenceController::run);
         Thread myThread2 = new Thread(myRestingRunnable::run);
+        Thread myThread3 = new Thread(MyRestingRunnable::new);
 
         myThread.start();
         myThread2.start();
+        myThread3.start();
     }
 
-    public static void run() {
+    public static void anyName() {
         System.out.println("Im running");
     }
 
