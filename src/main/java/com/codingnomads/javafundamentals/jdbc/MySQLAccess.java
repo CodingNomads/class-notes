@@ -27,7 +27,14 @@ public class MySQLAccess {
             resultSet = connection.createStatement().executeQuery("select * from college.courses;");
             writeResultSet(resultSet);
 
-            insertCourse(course_name, desc, credits, department, connection);
+
+            preparedStatement = connection.prepareStatement("insert into  college.courses (course_name, description, credits, department) " +
+                    "values (?, ?, ?, ?)");
+            preparedStatement.setString(1, course_name);
+            preparedStatement.setString(2, desc);
+            preparedStatement.setInt(3, credits);
+            preparedStatement.setString(4, department);
+            preparedStatement.executeUpdate();
 
 
             preparedStatement = connection.prepareStatement("SELECT course_name, description, credits, department from college.courses");
@@ -36,7 +43,7 @@ public class MySQLAccess {
 
             deleteCourse(connection);
 
-            resultSet = statement.executeQuery("select * from college.courses");
+            resultSet = connection.createStatement().executeQuery("select * from college.courses");
             writeMetaData(resultSet);
 
         } catch (Exception e) {
@@ -62,29 +69,6 @@ public class MySQLAccess {
         preparedStatement = connection.prepareStatement("delete from college.courses where course_name = ? ; ");
         preparedStatement.setString(1, COURSE_NAME);
         preparedStatement.executeUpdate();
-    }
-
-    private void insertCourse(String course_name, String desc, int credits, String department, Connection connection) {
-        PreparedStatement preparedStatement = null;
-        try {
-            preparedStatement = connection.prepareStatement("insert into  college.courses (course_name, description, credits, department) " +
-                    "values (?, ?, ?, ?)");
-            preparedStatement.setString(1, course_name);
-            preparedStatement.setString(2, desc);
-            preparedStatement.setInt(3, credits);
-            preparedStatement.setString(4, department);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     private String createConnectionUrl() {
