@@ -12,11 +12,9 @@ public class MethodReferenceController {
 
         MyRestingRunnable myRestingRunnable = new MyRestingRunnable();
         Thread myThread2 = new Thread(myRestingRunnable::run);
-        Thread myThread3 = new Thread(MyRestingRunnable::new);
 
         myThread.start();
         myThread2.start();
-        myThread3.start();
     }
 
     public static void anyName() {
