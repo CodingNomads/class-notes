@@ -1,7 +1,5 @@
 package com.codingnomads.javafundamentals.architecture.logic;
 
-import com.codingnomads.javafundamentals.architecture.data.CoursesRepository;
-
 import java.util.List;
 
 public class CoursesService {

@@ -1,30 +1,25 @@
 package com.codingnomads.javafundamentals.architecture;
 
 import com.codingnomads.javafundamentals.architecture.data.DbCoursesRepository;
-import com.codingnomads.javafundamentals.architecture.data.InMemoryCoursesRepository;
 import com.codingnomads.javafundamentals.architecture.logic.Course;
 import com.codingnomads.javafundamentals.architecture.logic.CoursesService;
-
-import java.util.List;
+import com.codingnomads.javafundamentals.architecture.presentation.Menu;
 
 public class Application {
 
 
     public static void main(String[] args) {
-        //InMemoryCoursesRepository inMemoryCoursesRepository = new InMemoryCoursesRepository();
         DbCoursesRepository dbCoursesRepository = new DbCoursesRepository();
         CoursesService coursesService = new CoursesService(dbCoursesRepository);
+        Menu menu = new Menu(coursesService);
 
-        Course course = createCourse("Java", "Software engineering", "A cool course", 10);
-        Course course2 = createCourse("C#", "Software engineering", "Another cool course", 10);
+        menu.startMenu();
 
-        coursesService.save(course);
-        coursesService.save(course2);
+      //  Course course = createCourse("Java", "Software engineering", "A cool course", 10);
+       // Course course2 = createCourse("C#", "Software engineering", "Another cool course", 10);
 
-        List<Course> courseList = coursesService.getAllCourses();
-        System.out.println("All the courses are " + courseList);
-
-
+   //     coursesService.save(course);
+    //    coursesService.save(course2);
     }
 
     private static Course createCourse(String courseName, String description, String department, int credits) {

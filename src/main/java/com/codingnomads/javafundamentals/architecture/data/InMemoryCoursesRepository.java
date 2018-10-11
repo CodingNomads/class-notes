@@ -1,11 +1,12 @@
 package com.codingnomads.javafundamentals.architecture.data;
 
 import com.codingnomads.javafundamentals.architecture.logic.Course;
+import com.codingnomads.javafundamentals.architecture.logic.CoursesRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InMemoryCoursesRepository implements CoursesRepository{
+public class InMemoryCoursesRepository implements CoursesRepository {
 
     private List<Course> courseList = new ArrayList<>();
 

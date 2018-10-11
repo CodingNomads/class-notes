@@ -1,4 +1,4 @@
-package com.codingnomads.javafundamentals.architecture.data;
+package com.codingnomads.javafundamentals.architecture.logic;
 
 import com.codingnomads.javafundamentals.architecture.logic.Course;
 

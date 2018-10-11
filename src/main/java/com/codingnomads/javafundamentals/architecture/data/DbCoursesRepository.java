@@ -1,6 +1,7 @@
 package com.codingnomads.javafundamentals.architecture.data;
 
 import com.codingnomads.javafundamentals.architecture.logic.Course;
+import com.codingnomads.javafundamentals.architecture.logic.CoursesRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
