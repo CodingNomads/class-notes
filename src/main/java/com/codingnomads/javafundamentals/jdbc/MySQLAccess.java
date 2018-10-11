@@ -19,7 +19,7 @@ public class MySQLAccess {
     public void readDataBase(String course_name, String desc, int credits, String department) throws Exception {
         Connection connection = null;
         Statement statement = null;
-        PreparedStatement preparedStatement;
+        PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
             connection = DriverManager.getConnection(createConnectionUrl());
@@ -51,6 +51,10 @@ public class MySQLAccess {
         } finally {
             if (resultSet != null) {
                 resultSet.close();
+            }
+
+            if (preparedStatement != null) {
+                preparedStatement.close();
             }
 
             if (statement != null) {
